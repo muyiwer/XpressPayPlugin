@@ -4,7 +4,7 @@ This is a JavaScript library for implementing XpressPay payment gateway
 
 ## Demo
 
-![Demo](npm_xpressPay.png?raw=true "Demo Image")
+![Demo](npm_xpressPay.PNG?raw=true "Demo Image")
 
 ## Get Started
 
