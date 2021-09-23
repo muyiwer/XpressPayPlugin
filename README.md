@@ -113,13 +113,13 @@ Response from calling VerifyPayment function
 ### 1. Using React
 Please checkout [React Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/React) for how you can implement it on react
 
-### 1. Using Angular
+### 2. Using Angular
 Please checkout [Angular Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/Angular) for how you can implement it on angular
 
-### 1. Using Vue
+### 3. Using Vue
 Please checkout [Vue Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/Vuejs) for how you can implement it on vue
 
-### 1. Using CDN
+### 4. Using CDN
 Please checkout [Via CDN Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/CDN) for how you can implement it via CDN
 
 
