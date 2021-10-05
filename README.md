@@ -31,7 +31,8 @@ This library can be implemented into any Javascript framework applications
 
  ### Sample Function Request and Responses
 
-Request for calling InitialisePayment function
+Request for calling InitialisePayment function.
+
 To initialize the transaction, you'll need to pass information such as email, first name, last name amount, publicKey, etc. Email and amount are required. You can also pass any other additional information in the metadata object field. Here is the full list of parameters you can pass:
 |Param       | Type                 | Default    | Required | Description                      
 | :------------ | :------------------- | :--------- | :------- | :-------------------------------------------------
@@ -82,7 +83,8 @@ Response from calling InitialisePayment function
 
 
 
-Request for calling VerifyPayment function
+Request for calling VerifyPayment function.
+
 To verify payment, you'll need to pass information such as publicKey, transactionId and mode are required. Here is the full list of parameters you can pass:
 |Param       | Type                 | Default    | Required | Description                      
 | :------------ | :------------------- | :--------- | :------- | :-------------------------------------------------
