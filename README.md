@@ -67,7 +67,7 @@ Response from calling InitialisePayment function
 | :------------ | :------------------- | :-------------------------------------------------
 | success	| `boolean`			 | Shows whether the intialise payment function call was successful or not
 | message | `string`  | description of the response data
-| data | `object`          | it includes `authorizeUrl` which is the url that you will redirect your customers to make payment and `reference` which is the unique transaction identification generated from us.
+| data | `object`          | it includes `authorizeUrl` which is the url that you will use to redirect your customers to make payment and `reference` which is the unique transaction identification generated from us.
 
 ```json
 {
