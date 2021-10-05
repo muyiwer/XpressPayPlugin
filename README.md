@@ -119,9 +119,9 @@ data object
 histories objects ($values)
 |Param       | Type                 | Description    
 | :------------ | :------------------- | :-------------------------------------------------
-| type | `string`  | identicates what the title of the summary of what happened during customer transaction on our page page at a particular period of time. eg `action` which means customer inputed details or clicks a button `success` which means transaction was successful `error` which means error occured at the end of the transaction `redirect` which means user was redirected
-| message | `string`  | description of what customer did or happened during the particular period of making transaction on our platform
-| status | `string`  | status from the transaction made by cusstomer
+| type | `string`  | Identicates the title of the summary of what happened during customer transaction on our payment page at a particular period of time. eg `action` which means customer inputed details or clicks a button `success` which means transaction was successful `error` which means error occured at the end of the transaction `redirect` which means user was redirected
+| message | `string`  | Description of what customer did or happened during the particular period of making transaction on our payment page
+| status | `string`  | The status from the transaction made by customer
 | date | `string`  | The date customer or system executed this process
 | time | `string`  | The time the customer or system executed this process
 
