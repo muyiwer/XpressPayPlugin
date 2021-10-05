@@ -64,7 +64,7 @@ To initialize the transaction, you'll need to pass information such as email, fi
 Response from calling InitialisePayment function
 
 |Param       | Type                 | Description                      
-| :------------ | :------------------- | :--------- | :------- | :-------------------------------------------------
+| :------------ | :------------------- | :-------------------------------------------------
 | success	| `boolean`			 | Shows whether the intialise payment function call was successful or not
 | message | `string`  | description of the response data
 | data | `object`          | it includes `authorizeUrl` which is the url that you will redirect your customers to make payment and `reference` which is the unique transaction identification generated from us.
