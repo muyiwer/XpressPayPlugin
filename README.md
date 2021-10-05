@@ -102,7 +102,7 @@ To verify payment, you'll need to pass information such as publicKey, transactio
 ```
 Response from calling VerifyPayment function
 |Param       | Type                 | Description                      
-| :------------ | :------------------- | :--------- | :------- | :-------------------------------------------------
+| :------------ | :------------------- | :-------------------------------------------------
 | success	| `boolean`			 | Shows whether the intialise payment function call was successful or not
 | message | `string`  | description of the response data
 
