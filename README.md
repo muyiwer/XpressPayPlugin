@@ -62,6 +62,7 @@ To initialize the transaction, you'll need to pass information such as email, fi
 }
 ```
 Response from calling InitialisePayment function
+
 |Param       | Type                 | Description                      
 | :------------ | :------------------- | :--------- | :------- | :-------------------------------------------------
 | success	| `boolean`			 | Shows whether the intialise payment function call was successful or not
