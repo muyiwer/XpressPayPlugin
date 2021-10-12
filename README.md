@@ -175,7 +175,7 @@ To verify payment, you'll need to pass information such as publicKey, transactio
 ```
 ## Test Cards
 |Type of Card       | Card PAN              | Expiry Date  | Pin  | CVV2   
-| :------------ | :------------------- | :-------------------------------------------------
+| :------------------------------------------------- | :------------------------- | :---------- | :---------- | :----------
 | Successful Transactions Card | 6280511000000095  | 12/26 | 0000 | 123
 | Successful Transactions Card | 5399830000000008  | 05/30 | 123456 | 000
 | VISA Test Card | 4000000000000002  | 	03/50 | 	N/A | 123
