@@ -86,16 +86,15 @@ div {
 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
 crossorigin="anonymous"></script>
 <!-- <script type="module" src="./index.js"></script> --->
-<script data-main="scripts/app" src="http://172.22.54.111:8020/xpressPay.min.js"></script> 
+<script data-main="scripts/app" src="https://staging.xpresspayonline.com:8292/xpressPay.min.js"></script> 
 <script>
   $(document).ready(function(){
    const transactionId = 12334567 //From the callback url/current url or any other way you can better implement it;
  XpressPay.VerifyPayment({
-        publicKey: "XPPUBK-e634d14d9ded04eaf05d5b63a0a06d2f-X",
+        publicKey: "xxxxxxxxxxx",
         transactionId: transactionId,
         mode: "Debug",
       }).then((response) => {
-          console.log("object", response)
         let amount = response?.data?.amount;
          if (amount) {
             $("#amount").text("You have payed ")
