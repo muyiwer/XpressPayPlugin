@@ -61,8 +61,7 @@ export class AppComponent {
       ],
     }).then((response : any) => {
       if (response.success) {
-        sessionStorage.setItem("tranId", transactionId); // it can be saved to Database.
-        sessionStorage.setItem("reference", response.data?.reference); // it can be saved to Database
+        sessionStorage.setItem("reference", response.data?.reference); // it should be saved to Database (optional)
         window.location.href = response.data?.authorizeUrl;
       } else {
         window.location.href = response.data?.authorizeUrl;
@@ -70,18 +69,14 @@ export class AppComponent {
     });
   };
    GetPaymentDescription() : string {
-    const tranId =
-    localStorage.getItem("tranId") === null
-      ? ""
-      : localStorage.getItem("tranId");
+   const transactionId = 12334567 //From the callback/current url/ or any other way you can better implement it;
   XPay.VerifyPayment({
     publicKey: "xxxxxxxxxxxxxxx",
-    transactionId: tranId,
+    transactionId: transactionId,
     mode: "Debug",
   }).then((response :any) => {
     let amount = response?.data?.amount;
-    if (amount) {
-      sessionStorage.setItem('transactionHistory', response.data.history)
+    if (response.success) {
       return "You have paid " + amount;
     } else {
       return ''
@@ -131,6 +126,15 @@ app.component.html
 
 
 ```
+## Test Cards
+|Type of Card       | Card PAN              | Expiry Date  | Pin  | CVV2   
+| :------------ | :------------------- | :-------------------------------------------------
+| Successful Transactions Card | 6280511000000095  | 12/26 | 0000 | 123
+| Successful Transactions Card | 5399830000000008  | 05/30 | 123456 | 000
+| VISA Test Card | 4000000000000002  | 	03/50 | 	N/A | 123
+| Insufficient Funds Card | 5061030000000000027  | 01/22 | 1234 | 123
+| Exceeds Withdrawal Limit Card | 5061030000000000068  | 01/22 | 1234 | 123
+
 Please checkout [Xpresspay Documentation](https://github.com) other ways you can integrate with our plugin
 ## Deployment
 

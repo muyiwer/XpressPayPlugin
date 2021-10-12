@@ -67,7 +67,7 @@ export default {
         publicKey: 'xxxxxxxxxxxxxxxx',
         currency: 'NGN',
         mode: 'Debug',
-        callbackUrl: window.location.href,
+        callbackUrl: `${window.location.href}/transactionId=${transactionId}`,
         metadata: [
           {
             name: 'sample',
@@ -76,8 +76,7 @@ export default {
         ]
       }).then(response => {
         if (response.success) {
-          sessionStorage.setItem('tranId', transactionId) // it can be saved to Database.
-          sessionStorage.setItem('reference', response.data?.reference) // it can be saved to Database
+          sessionStorage.setItem("reference", response.data?.reference); // it should be saved to Database (optional)
           window.location.href = response.data?.authorizeUrl
         } else {
           window.location.href = response.data?.authorizeUrl
@@ -86,20 +85,16 @@ export default {
     }
   },
   mounted () {
-    const tranId =
-      localStorage.getItem('tranId') === null
-        ? ''
-        : localStorage.getItem('tranId')
+   const transactionId = 12334567 //From the callback/current url/ or any other way you can better implement it;
     XPay.VerifyPayment({
       publicKey: 'xxxxxxxxxxxxxx',
-      transactionId: tranId,
+      transactionId: transactionId,
       mode: 'Debug'
     }).then(response => {
       const amount = response?.data?.amount
       if (amount) {
         const transactionHistory = response.data.history
         this.paymentDescription = 'You have paid ' + amount
-        console.log(transactionHistory)
       } else {
         this.paymentDescription = ''
       }

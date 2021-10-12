@@ -16,7 +16,6 @@ This Javascript library provides a wrapper to implement XpressPay Payment to you
 This library can be implemented into your application via CDN using Javascript or JQuery
 
 
-### 1. Using React
 
 ```html
 <!DOCTYPE html>
@@ -90,9 +89,10 @@ crossorigin="anonymous"></script>
 <script data-main="scripts/app" src="http://172.22.54.111:8020/xpressPay.min.js"></script> 
 <script>
   $(document).ready(function(){
+   const transactionId = 12334567 //From the callback url/current url or any other way you can better implement it;
  XpressPay.VerifyPayment({
         publicKey: "XPPUBK-e634d14d9ded04eaf05d5b63a0a06d2f-X",
-        transactionId:  sessionStorage.getItem("tranId") === null  ? "" : sessionStorage.getItem("tranId"),
+        transactionId: transactionId,
         mode: "Debug",
       }).then((response) => {
           console.log("object", response)
@@ -114,7 +114,7 @@ crossorigin="anonymous"></script>
             email: email,
             publicKey: "XPPUBK-e634d14d9ded04eaf05d5b63a0a06d2f-X",
             currency: document.getElementById("country").value,
-            callbackUrl: window.location.href,
+            callbackUrl: `${window.location.href}/transactionId=${transactionId}`,
             metadata: [
                 {
                     name: "string",
@@ -137,6 +137,15 @@ crossorigin="anonymous"></script>
 </html>
 
 ```
+
+## Test Cards
+|Type of Card       | Card PAN              | Expiry Date  | Pin  | CVV2   
+| :------------ | :------------------- | :-------------------------------------------------
+| Successful Transactions Card | 6280511000000095  | 12/26 | 0000 | 123
+| Successful Transactions Card | 5399830000000008  | 05/30 | 123456 | 000
+| VISA Test Card | 4000000000000002  | 	03/50 | 	N/A | 123
+| Insufficient Funds Card | 5061030000000000027  | 01/22 | 1234 | 123
+| Exceeds Withdrawal Limit Card | 5061030000000000068  | 01/22 | 1234 | 123
 Please checkout [Xpresspay Documentation](https://github.com) other ways you can integrate with our plugin
 ## Deployment
 
