@@ -114,6 +114,8 @@ crossorigin="anonymous"></script>
             publicKey: "XPPUBK-e634d14d9ded04eaf05d5b63a0a06d2f-X",
             currency: document.getElementById("country").value,
             callbackUrl: `${window.location.href}/transactionId=${transactionId}`,
+            productId:"1001",
+            productDescription:"MTN",
             metadata: [
                 {
                     name: "string",

@@ -68,6 +68,8 @@ export default {
         currency: 'NGN',
         mode: 'Debug',
         callbackUrl: `${window.location.href}/transactionId=${transactionId}`,
+        productId:"1001",
+        productDescription:"MTN",
         metadata: [
           {
             name: 'sample',

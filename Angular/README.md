@@ -53,6 +53,8 @@ export class AppComponent {
       currency: "NGN",
       mode: "Debug",
       callbackUrl: window.location.href,
+      productId:"1001",
+      productDescription:"MTN",
       metadata: [
         {
           name: "sample",
