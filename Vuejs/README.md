@@ -94,10 +94,12 @@ export default {
       mode: 'Debug'
     }).then(response => {
       const amount = response?.data?.amount
-      if (amount) {
+       if (response.success) {
+           //Transaction successful at payment gateway
         const transactionHistory = response.data.history
         this.paymentDescription = 'You have paid ' + amount
       } else {
+          //Transaction NOT successful at payment gateway
         this.paymentDescription = ''
       }
     })

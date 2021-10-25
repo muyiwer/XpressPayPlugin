@@ -96,9 +96,11 @@ crossorigin="anonymous"></script>
         mode: "Debug",
       }).then((response) => {
         let amount = response?.data?.amount;
-         if (amount) {
+           if (response.success) {
+               //Transaction successful at payment gateway
             $("#amount").text("You have payed ")
         } else {
+          //Transaction not successful at payment gateway
             $("#amount").text("")
         }
       });

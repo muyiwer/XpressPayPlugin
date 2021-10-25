@@ -86,10 +86,12 @@ function App() {
         transactionId: transactionId,
         mode: "Debug",
       }).then((response) => {
-        let amount = response?.data?.amount;
-        if (amount) {
+        //Transaction successful at payment gateway
+        const amount = response?.data?.amount;
+        if (response.success) {
           setState({ ...state, amount, transactions: response.data.history });
         } else {
+          //Transaction not successful at payment gateway
           setState({ ...state, amount: "" });
         }
       });
