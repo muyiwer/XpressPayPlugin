@@ -199,7 +199,8 @@ Please checkout [Vue Documentation](https://github.com/muyiwer/XpressPayPlugin/t
 ### 4. Using CDN
 Please checkout [Via CDN Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/CDN) for how you can implement it via CDN
 
-
+### 5. Using Direct API Integration
+Please checkout [Direct API Integration Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/APIintegration) to integrate directly with the API.
 
 ## How can I thank you?
 
