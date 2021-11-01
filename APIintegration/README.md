@@ -157,6 +157,13 @@ To verify payment, you'll need to pass information such as publicKey, transactio
 | date | `string`  | The date customer or system executed this process
 | time | `string`  | The time the customer or system executed this process
 
+## How can I thank you?
 
+Why not star the github repo? I'd love the attention! Why not share the link for this repository on Twitter or Any Social Media? Spread the word!
+
+Don't forget to [follow me on twitter](https://twitter.com/muyiTechBadtGuy)!
+
+Thanks!
+Olumuyiwa Aro
 
 
