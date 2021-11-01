@@ -6,7 +6,8 @@ This APIs documentation provides a way to integrate our API to any application.
 
 This API can be integrated into any application
 
-#### Initialize Payment
+
+### Initialize Payment
 This api initialize customer payment by inputing all custumer payment details and api response with payment reference and authorized url where customer will be redirected to make payment.
 To initialize the transaction, you'll need to pass information such as email, first name, last name amount, publicKey, etc. Email and amount are required. You can also pass any other additional information in the metadata object field.
 ##### {{baseUrl}}/api/Payments/Initialize
@@ -62,7 +63,9 @@ To initialize the transaction, you'll need to pass information such as email, fi
 | data | `object`          | it includes `authorizeUrl` which is the url that you will use to redirect your customers to make payment and `reference` which is the unique transaction identification generated from us.
 
 
-#### Verify Payment
+
+
+### Verify Payment
 To verify payment, you'll need to pass information such as publicKey, transactionId and mode are required. Here is the full list of parameters you can pass:
 ##### {{baseUrl}}/api/Payments/VerifyPayment
 ##### Request body
