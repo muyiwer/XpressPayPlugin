@@ -29,12 +29,12 @@ To initialize the transaction, you'll need to pass information such as email, fi
 ```
 |Param       | Type                 | Default    | Required | Description                      
 | :------------ | :------------------- | :--------- | :------- | :-------------------------------------------------
-| amount	| `string`			   | undefined      | `true`  | Amount you want to debit customer e.g 1000.00, 10.00...
-| transactionId      | `string`             | undefined   | `true`  | Unique case sensitive transaction identification
-| email | `string`             | undefined       | `true`  | Email address of customer
+| amount	| `string`			   | null      | `true`  | Amount you want to debit customer e.g 1000.00, 10.00...
+| transactionId      | `string`             | null   | `true`  | Unique case sensitive transaction identification
+| email | `string`             | null       | `true`  | Email address of customer
 | currency      | `string`  |  `NGN`    | `true`   | Currency charge should be performed in. Allowed only `NGN`.
-| productId      | `string`  |  undefined    | `false`   | unique identification number of the product your customer want to pay to.
-| productDescription     | `string`  |  undefined    | `false`   | description number of the product your customer want to pay to.
+| productId      | `string`  |  null    | `false`   | unique identification number of the product your customer want to pay to.
+| productDescription     | `string`  |  null    | `false`   | description number of the product your customer want to pay to.
 | mode      | `string`  |  `Debug`    | `true`   | Allowed values are `Debug` or `Live`.
 | callBackUrl      | `string`  |  your current url page    | `false`   | CallbackUrl is the url you want your customer to be redirected to when payment is successful. The default url is the page url where customer intialized payment.
 | metadata      | `object`  |  empty `object`    | `false`   | Object containing any extra information you want recorded with the transaction.
@@ -77,7 +77,7 @@ To verify payment, you'll need to pass information such as publicKey, transactio
 ```
 |Param       | Type                 | Default    | Required | Description                      
 | :------------ | :------------------- | :--------- | :------- | :-------------------------------------------------
-| transactionId      | `string`             | undefined   | `true`  | Unique case sensitive transaction identification
+| transactionId      | `string`             | null   | `true`  | Unique case sensitive transaction identification
 ##### Request header
 |Name       | Value                | Required | Description   
 | :------------ | :------------------- | :------- | :-------------------------------------------------
