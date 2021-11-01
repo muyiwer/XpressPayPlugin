@@ -35,7 +35,6 @@ To initialize the transaction, you'll need to pass information such as email, fi
 | currency      | `string`  |  `NGN`    | `true`   | Currency charge should be performed in. Allowed only `NGN`.
 | productId      | `string`  |  null    | `false`   | unique identification number of the product your customer want to pay to.
 | productDescription     | `string`  |  null    | `false`   | description number of the product your customer want to pay to.
-| mode      | `string`  |  `Debug`    | `true`   | Allowed values are `Debug` or `Live`.
 | callBackUrl      | `string`  |  your current url page    | `false`   | CallbackUrl is the url you want your customer to be redirected to when payment is successful. The default url is the page url where customer intialized payment.
 | metadata      | `object`  |  empty `object`    | `false`   | Object containing any extra information you want recorded with the transaction.
 
