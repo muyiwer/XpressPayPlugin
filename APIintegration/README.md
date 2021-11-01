@@ -57,7 +57,7 @@ To initialize the transaction, you'll need to pass information such as email, fi
 ```
 |Param       | Type                 | Description                      
 | :------------ | :------------------- | :-------------------------------------------------
-| responseCode	| `string`			 | `00` response code represent that payment was successful on our payment gateway else it failed
+| responseCode	| `string`			 | `00` response code represent success else failed
 | responseMessage | `string`  | description of the response data
 | data | `object`          | it includes `authorizeUrl` which is the url that you will use to redirect your customers to make payment and `reference` which is the unique transaction identification generated from us.
 
@@ -134,8 +134,9 @@ To verify payment, you'll need to pass information such as publicKey, transactio
 ```
 |Param       | Type                 | Description                      
 | :------------ | :------------------- | :-------------------------------------------------
-| responseCode	| `string`			 | `00` response code represent success else failed
+| responseCode	| `string`			 |  `00` response code represent that payment was successful on our payment gateway else it failed
 | responseMessage | `string`  | description of the response data
+| data | `object`          | The below illustrates the data object propertes
 
 
 #### data object
