@@ -14,13 +14,15 @@ To initialize the transaction, you'll need to pass information such as email, fi
 ##### Request body
 ```json
 {
-  "transactionId": "123456789",
+  "email": "user@example.com",
+  "amount": "0.00",
+  "transactionId": "123456",
   "currency": "NGN",
-  "callbackUrl": "http://www.merchant-callback-url.com",
+  "callbackUrl": "http://your_callback_url.com",
   "metadata": [
     {
-      "name": "smaple",
-      "value": "test"
+      "name": "string",
+      "value": "string"
     }
   ],
   "productId": "001",
