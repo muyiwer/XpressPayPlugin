@@ -32,7 +32,7 @@ To initialize the transaction, you'll need to pass information such as email, fi
 |Param       | Type                 | Default    | Required | Description                      
 | :------------ | :------------------- | :--------- | :------- | :-------------------------------------------------
 | amount	| `string`			   | null      | `true`  | Amount you want to debit customer e.g 1000.00, 10.00...
-| transactionId      | `string`             | null   | `true`  | Unique case sensitive transaction identification
+| transactionId      | `string`             | null   | `true`  | Unique case sensitive transaction identification. The transactionId should not be minimum of 6 and maximum of 30
 | email | `string`             | null       | `true`  | Email address of customer
 | currency      | `string`  |  `NGN`    | `true`   | Currency charge should be performed in. Allowed only `NGN`.
 | productId      | `string`  |  null    | `false`   | unique identification number of the product your customer want to pay to.
