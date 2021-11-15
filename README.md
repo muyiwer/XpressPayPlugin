@@ -42,6 +42,7 @@ To initialize the transaction, you'll need to pass information such as email, fi
 | publicKey       | `string`        | undefined | `true`  | Your public key from XpressPay.
 | currency      | `string`  |  `NGN`    | `true`   | Currency charge should be performed in. Allowed only `NGN`.
 | productId      | `string`  |  undefined    | `false`   | unique identification number of the product your customer want to pay to.
+| applyConviniencyCharge      | `boolean`  |  undefined    | `false`   | specify whether to apply charge for this customer transaction.
 | productDescription     | `string`  |  undefined    | `false`   | description number of the product your customer want to pay to.
 | mode      | `string`  |  `Debug`    | `true`   | Allowed values are `Debug` or `Live`.
 | callBackUrl      | `string`  |  your current url page    | `false`   | CallbackUrl is the url you want your customer to be redirected to when payment is successful. The default url is the page url where customer intialized payment.
@@ -57,6 +58,7 @@ To initialize the transaction, you'll need to pass information such as email, fi
       "mode": "Debug",
       "callbackUrl": "window.location.href/?transactionId=12345678",
       "productId":"1001",
+      "applyConviniencyCharge":true,
       "productDescription":"MTN",
       "metadata": [
         {
