@@ -204,6 +204,9 @@ Please checkout [Via CDN Documentation](https://github.com/muyiwer/XpressPayPlug
 ### 5. Using Direct API Integration
 Please checkout [Direct API Integration Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/APIintegration) to integrate directly with the API.
 
+### 6. Using Joomla J2Stores
+Please checkout [J2Stores Plugin Documentation](https://github.com/Xpresspayment/XpayPluginJoomla) for how you can implement it our plugin using javascript framework and direct integration
+
 ## How can I thank you?
 
 Why not star the github repo? I'd love the attention! Why not share the link for this repository on Twitter or Any Social Media? Spread the word!
