@@ -98,6 +98,7 @@ To verify payment, you'll need to pass information such as publicKey, transactio
     "amount": "10.00",
     "currency": "NGN",
     "status": "Transaction Successful",
+    "isSuccessful":true,
     "paymentType":"Card",
     "gatewayResponse": "Transaction Successful. Approved",
     "transactionId": "1234567",
@@ -149,6 +150,7 @@ To verify payment, you'll need to pass information such as publicKey, transactio
 | :------------ | :------------------- | :-------------------------------------------------
 | amount | `string`  | amount debited from customer
 | currency | `string`  | amount currency
+| isSuccessful | `boolean` | shows whether the customer transaction was successful.
 | status | `string`  | status from the transaction made by cusstomer
 | paymentType | `string`  | type of payment made by customer eg Card, Bank, USSD, QR....
 | gatewayResponse | `string`  | response from payment gateway
