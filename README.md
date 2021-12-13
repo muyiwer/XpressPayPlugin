@@ -54,7 +54,7 @@ To initialize the transaction, you'll need to pass information such as email, fi
       "transactionId": "Math.floor(Math.random() * 1000000)", 
       "email": "sample@mail.com",
       "publicKey": "xxxxxxxxxxxxxxxxxxxxxxxxxx",
-      "currency": "NGN",
+      "currency": "NGN", 
       "mode": "Debug",
       "callbackUrl": "window.location.href/?transactionId=12345678",
       "productId":"1001",

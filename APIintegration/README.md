@@ -14,19 +14,22 @@ To initialize the transaction, you'll need to pass information such as email, fi
 ##### Request body
 ```json
 {
-  "email": "user@example.com",
-  "amount": "0.00",
-  "transactionId": "123456",
-  "currency": "NGN",
-  "callbackUrl": "http://your_callback_url.com",
-  "metadata": [
-    {
-      "name": "string",
-      "value": "string"
-    }
-  ],
-  "productId": "001",
-  "productDescription": "MTN"
+      "amount":  "2000.00", 
+      "transactionId": "321654", 
+      "email": "sample@mail.com",
+      "publicKey": "xxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "currency": "NGN",
+      "mode": "Debug",
+      "callbackUrl": "www.test.com/?transactionId=12345678",
+      "productId":"1001",
+      "applyConviniencyCharge":true,
+      "productDescription":"MTN",
+      "metadata": [
+        {
+          "name": "sample",
+          "value": "test",
+        },
+      ],
 }
 ```
 |Param       | Type                 | Default    | Required | Description                      
@@ -52,7 +55,7 @@ To initialize the transaction, you'll need to pass information such as email, fi
   "responseCode":"00",
   "responseMessage":"sucessfully initialized payment",
   "data": {
-                "authorizeUrl": "http://xpay.com/xxxxxxxx",
+                "authorizeUrl": "http://xpay.com/xxxxxxxx", 
                 "reference": "xxxxxxxx",
           }
 }
