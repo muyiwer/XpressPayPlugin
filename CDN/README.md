@@ -106,8 +106,8 @@ crossorigin="anonymous"></script>
 
     $("form").submit(function(e){
         e.preventDefault()
-        let email = document.getElementById("email").value;
-        let amount = document.getElementById("amount").value;
+        const email = document.getElementById("email").value;
+        const amount = document.getElementById("amount").value + ".00";
         XpressPay.InitialisePayment({
             amount: amount + "",
             transactionId: "1234567",
