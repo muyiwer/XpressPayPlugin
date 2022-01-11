@@ -190,7 +190,7 @@ To verify payment, you'll need to pass information such as publicKey, transactio
 ```
 ## Test Cards
 |Type of Card       | Card PAN              | Expiry Date  | Pin  | CVV2  | OTP 
-| :------------------------------------------------- | :------------------------- | :---------- | :---------- | :----------
+| :------------------------------------------------- | :------------------------- | :---------- | :---------- | :---------- | :-----------
 | Successful Transactions Card | 5399830000000008  | 05/30 | 123456 | 000 | 123456
 | VISA Test Card | 4000000000000002  | 	03/50 | 	N/A | 123
 | Insufficient Funds Card | 5061030000000000027  | 01/22 | 1234 | 123
