@@ -85,13 +85,12 @@ div {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
 crossorigin="anonymous"></script>
-<!-- <script type="module" src="./index.js"></script> --->
-<script data-main="scripts/app" src="https://staging.xpresspayonline.com:8292/xpressPay.min.js"></script> 
+<script data-main="scripts/app" src="https://pgsandbox.xpresspayments.com:8020/xpressPay.min.js"></script> 
 <script>
   $(document).ready(function(){
    const transactionId = 12334567 //From the callback url/current url or any other way you can better implement it;
  XpressPay.VerifyPayment({
-        publicKey: "xxxxxxxxxxx",
+        publicKey: "XPPUBK-e634d14d9ded04eaf05d5b63a0a06d2f-X",
         transactionId: transactionId,
         mode: "Debug",
       }).then((response) => {
@@ -118,6 +117,11 @@ crossorigin="anonymous"></script>
             callbackUrl: `${window.location.href}/transactionId=${transactionId}`,
             productId:"1001",
             productDescription:"MTN",
+            bodyColor: "#0000",
+            buttonColor: "#0000",
+            footerText: "Powered by Test Ltd",
+            footerLink: "http://test.com",
+            footerLogo: "http://test.com/test.png",
             metadata: [
                 {
                     name: "string",
@@ -142,10 +146,9 @@ crossorigin="anonymous"></script>
 ```
 
 ## Test Cards
-|Type of Card       | Card PAN              | Expiry Date  | Pin  | CVV2   
-| :------------------------------------------------- | :------------------------- | :---------- | :---------- | :----------
-| Successful Transactions Card | 6280511000000095  | 12/26 | 0000 | 123
-| Successful Transactions Card | 5399830000000008  | 05/30 | 123456 | 000
+|Type of Card       | Card PAN              | Expiry Date  | Pin  | CVV2  | OTP 
+| :------------------------------------------------- | :------------------------- | :---------- | :---------- | :---------- | :-----------
+| Successful Transactions Card | 5399830000000008  | 05/30 | 123456 | 000 | 123456
 | VISA Test Card | 4000000000000002  | 	03/50 | 	N/A | 123
 | Insufficient Funds Card | 5061030000000000027  | 01/22 | 1234 | 123
 | Exceeds Withdrawal Limit Card | 5061030000000000068  | 01/22 | 1234 | 123

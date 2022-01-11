@@ -8,7 +8,7 @@ This API can be integrated into any application
 
 ### Base Urls
 #### Test
-https://pgsandbox.xpresspayments.com:8020/
+https://pgsandbox.xpresspayments.com:8090/
 #### Production
 https://myxpresspay.com:6004/
 
