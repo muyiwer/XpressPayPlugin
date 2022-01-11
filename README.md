@@ -46,6 +46,10 @@ To initialize the transaction, you'll need to pass information such as email, fi
 | productDescription     | `string`  |  undefined    | `false`   | description number of the product your customer want to pay to.
 | mode      | `string`  |  `Debug`    | `true`   | Allowed values are `Debug` or `Live`.
 | callBackUrl      | `string`  |  your current url page    | `false`   | CallbackUrl is the url you want your customer to be redirected to when payment is successful. The default url is the page url where customer intialized payment.
+| bodyColor     | `string`  |  null    | `false`   | your prefered customized color for the payment page body.
+| buttonColor     | `string`  |  null    | `false`   |  your prefered customized color for the payment page buttons.
+| footerText     | `string`  |  null    | `false`   |  your prefered customized text for the payment page footer.
+| footerLogo     | `string`  |  null    | `false`   |  your prefered customized logo for the payment page footer.
 | metadata      | `object`  |  empty `object`    | `false`   | Object containing any extra information you want recorded with the transaction.
 
 ```json
@@ -60,6 +64,11 @@ To initialize the transaction, you'll need to pass information such as email, fi
       "productId":"1001",
       "applyConviniencyCharge":true,
       "productDescription":"MTN",
+      "bodyColor": "#0000",
+      "buttonColor": "#0000",
+      "footerText": "Powered by Test Ltd",
+      "footerLink": "http://test.com",
+      "footerLogo": "http://test.com/test.png",
       "metadata": [
         {
           "name": "sample",
@@ -180,10 +189,9 @@ To verify payment, you'll need to pass information such as publicKey, transactio
 }
 ```
 ## Test Cards
-|Type of Card       | Card PAN              | Expiry Date  | Pin  | CVV2   
+|Type of Card       | Card PAN              | Expiry Date  | Pin  | CVV2  | OTP 
 | :------------------------------------------------- | :------------------------- | :---------- | :---------- | :----------
-| Successful Transactions Card | 6280511000000095  | 12/26 | 0000 | 123
-| Successful Transactions Card | 5399830000000008  | 05/30 | 123456 | 000
+| Successful Transactions Card | 5399830000000008  | 05/30 | 123456 | 000 | 123456
 | VISA Test Card | 4000000000000002  | 	03/50 | 	N/A | 123
 | Insufficient Funds Card | 5061030000000000027  | 01/22 | 1234 | 123
 | Exceeds Withdrawal Limit Card | 5061030000000000068  | 01/22 | 1234 | 123

@@ -6,6 +6,12 @@ This APIs documentation provides a way to integrate our API to any application.
 
 This API can be integrated into any application
 
+### Base Urls
+#### Test
+https://pgsandbox.xpresspayments.com:8020/
+#### Production
+https://myxpresspay.com:6004/
+
 
 ### Initialize Payment
 This api initialize customer payment by inputing all custumer payment details and api response with payment reference and authorized url where customer will be redirected to make payment.
@@ -24,6 +30,11 @@ To initialize the transaction, you'll need to pass information such as email, fi
       "productId":"1001",
       "applyConviniencyCharge":true,
       "productDescription":"MTN",
+      "bodyColor": "#0000",
+      "buttonColor": "#0000",
+      "footerText": "Powered by Test Ltd",
+      "footerLink": "http://test.com",
+      "footerLogo": "http://test.com/test.png",
       "metadata": [
         {
           "name": "sample",
@@ -41,6 +52,10 @@ To initialize the transaction, you'll need to pass information such as email, fi
 | productId      | `string`  |  null    | `false`   | unique identification number of the product your customer want to pay to.
 | productDescription     | `string`  |  null    | `false`   | description number of the product your customer want to pay to.
 | callBackUrl      | `string`  |  your current url page    | `false`   | CallbackUrl is the url you want your customer to be redirected to when payment is successful. The default url is the page url where customer intialized payment.
+| bodyColor     | `string`  |  null    | `false`   | your prefered customized color for the payment page body.
+| buttonColor     | `string`  |  null    | `false`   |  your prefered customized color for the payment page buttons.
+| footerText     | `string`  |  null    | `false`   |  your prefered customized text for the payment page footer.
+| footerLogo     | `string`  |  null    | `false`   |  your prefered customized logo for the payment page footer.
 | metadata      | `object`  |  empty `object`    | `false`   | Object containing any extra information you want recorded with the transaction.
 
 ##### Request header
