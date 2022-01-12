@@ -69,8 +69,8 @@ div {
     <label for="fname">Email</label>
     <input type="text" id="email" name="firstname" placeholder="Your email..">
 
-    <label for="lname">Amount</label>
-    <input type="text" id="amount" name="lastname" placeholder="Amount">
+    <label for="Amount">Amount</label>
+    <input type="text" id="amount" name="amount" placeholder="Amount">
     <label for="country">Currency</label>
     <select  id="country" name="country">
         <option value="NGN">Naira</option>
@@ -79,7 +79,7 @@ div {
         <option value="GHC">CEDIS</option>
     </select>
   
-    <input type="submit" value="Pay">
+    <input id="pay" type="submit" value="Pay">
   </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
@@ -104,42 +104,40 @@ crossorigin="anonymous"></script>
         }
       });
 
-    $("form").submit(function(e){
-        e.preventDefault()
-        const email = document.getElementById("email").value;
-        const amount = document.getElementById("amount").value + ".00";
+ $("form").submit(function (e) {
+        e.preventDefault();
+        var email = $("#email").val(); 
+        var amount = $("#amount").val();
+        $("#pay").val("Paying.........."); 
+        const transactionId = Math.floor(Math.random() * 99999999)
         XpressPay.InitialisePayment({
-            amount: amount + "",
-            transactionId: "1234567",
-            email: email,
-            publicKey: "XPPUBK-19995e83ba654840be35242359b66f8c-X",
-            currency: document.getElementById("country").value,
-            callbackUrl: `${window.location.href}/transactionId=${transactionId}`,
-            productId:"1001",
-            productDescription:"MTN",
-            bodyColor: "#0000",
-            buttonColor: "#0000",
-            footerText: "Powered by Test Ltd",
-            footerLink: "http://test.com",
-            footerLogo: "http://test.com/test.png",
-            metadata: [
-                {
-                    name: "string",
-                    value: "string"
-                }
-            ]
-        }).then(response => { 
-            if(response.success){
-                window.location.href = response.data.authorizeUrl
-            }else{
-                window.location.href = response.data.authorizeUrl
+          amount: amount + ".00",
+          transactionId: transactionId + "",
+          email: email,
+          mode: "Debug",
+          publicKey: "XPPUBK-19995e83ba654840be35242359b66f8c-X",
+          currency: document.getElementById("country").value,
+          productId: "1001",
+          productDescription: "test",
+          callbackUrl: `${window.location.href}?transactionid=${transactionId}`,
+          metadata: [
+            {
+              name: "string",
+              value: "string"
             }
-            
+          ]
+        }).then(response => {
+          if (response.success) {
+            window.location.href = response.data.authorizeUrl
+          } else {
+            window.location.href = response.data.authorizeUrl
+          }
+
         });
-});
-   
-});
-</script>
+      });
+
+    });
+  </script>
 </body>
 </html>
 
