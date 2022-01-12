@@ -90,7 +90,7 @@ crossorigin="anonymous"></script>
   $(document).ready(function(){
    const transactionId = 12334567 //From the callback url/current url or any other way you can better implement it;
  XpressPay.VerifyPayment({
-        publicKey: "XPPUBK-e634d14d9ded04eaf05d5b63a0a06d2f-X",
+        publicKey: "XPPUBK-19995e83ba654840be35242359b66f8c-X",
         transactionId: transactionId,
         mode: "Debug",
       }).then((response) => {
@@ -112,7 +112,7 @@ crossorigin="anonymous"></script>
             amount: amount + "",
             transactionId: "1234567",
             email: email,
-            publicKey: "XPPUBK-e634d14d9ded04eaf05d5b63a0a06d2f-X",
+            publicKey: "XPPUBK-19995e83ba654840be35242359b66f8c-X",
             currency: document.getElementById("country").value,
             callbackUrl: `${window.location.href}/transactionId=${transactionId}`,
             productId:"1001",
