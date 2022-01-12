@@ -70,7 +70,7 @@ div {
     <input type="text" id="email" name="firstname" placeholder="Your email..">
 
     <label for="Amount">Amount</label>
-    <input type="text" id="amount" name="amount" placeholder="Amount">
+    <input type="text" id="fee" name="amount" placeholder="Amount">
     <label for="country">Currency</label>
     <select  id="country" name="country">
         <option value="NGN">Naira</option>
@@ -107,7 +107,7 @@ crossorigin="anonymous"></script>
  $("form").submit(function (e) {
         e.preventDefault();
         var email = $("#email").val(); 
-        var amount = $("#amount").val();
+        var amount = $("#fee").val();
         $("#pay").val("Paying.........."); 
         const transactionId = Math.floor(Math.random() * 99999999)
         XpressPay.InitialisePayment({

@@ -10,6 +10,7 @@
   }
 
   input[type=text],
+  input[type=number],
   select {
     width: 100%;
     padding: 12px 20px;
@@ -54,7 +55,7 @@
       <input required type="text" id="email" name="firstname" placeholder="Your email..">
 
       <label for="Amount">Amount</label>
-      <input required type="text" id="amount" name="amount" placeholder="Amount">
+      <input required type="number" id="fee" name="amount" placeholder="Amount">
       <label for="country">Currency</label>
       <select required id="country" name="country">
         <option value="NGN">Naira</option>
@@ -82,17 +83,18 @@
         console.log("object", response)
         let amount = response?.data?.amount;
         if (amount) {
-          $("#amount").text("You have payed ")
+          $("#amount").text("You have payed " + amount)
         } else {
           $("#amount").text("")
         }
       });
       $("form").submit(function (e) {
         e.preventDefault();
+        var amount = $("#fee").val();
         var email = $("#email").val(); 
-        var amount = $("#amount").val();
         $("#pay").val("Paying.........."); 
         const transactionId = Math.floor(Math.random() * 99999999)
+        console.log(amount);
         XpressPay.InitialisePayment({
           amount: amount + ".00",
           transactionId: transactionId + "",
