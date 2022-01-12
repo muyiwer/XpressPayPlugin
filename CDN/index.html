@@ -47,12 +47,12 @@ div {
     <p style="text-align: center;"><span id="description"> </span> <span id="amount" style="font-weight: bold;"></span></p>
   <form   method="POST">
     <label for="fname">Email</label>
-    <input type="text" id="email" name="firstname" placeholder="Your email..">
+    <input required type="text" id="email" name="firstname" placeholder="Your email..">
 
     <label for="lname">Amount</label>
-    <input type="text" id="amount" name="lastname" placeholder="Amount">
+    <input required type="text" id="amount" name="lastname" placeholder="Amount">
     <label for="country">Currency</label>
-    <select  id="country" name="country">
+    <select required  id="country" name="country">
         <option value="NGN">Naira</option>
         <option value="USD">Dollar</option>
         <option value="EURO">EURO</option>
@@ -66,12 +66,14 @@ div {
 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
 crossorigin="anonymous"></script>
 <!-- <script type="module" src="./index.js"></script> --->
-<script data-main="scripts/app" src="http://172.22.54.111:8020/xpressPay.min.js"></script> 
+<script data-main="scripts/app" src="https://pgsandbox.xpresspayments.com:8090/xpressPay.min.js"></script> 
 <script>
   $(document).ready(function(){
+    const params = new URLSearchParams(window.location.search);
+    const tranId = params.get('transactionid');
     XpressPay.VerifyPayment({
         publicKey: "XPPUBK-e634d14d9ded04eaf05d5b63a0a06d2f-X",
-        transactionId:  sessionStorage.getItem("tranId") === null  ? "" : sessionStorage.getItem("tranId"),
+        transactionId:  tranId ?? "",
         mode: "Debug",
       }).then((response) => {
           console.log("object", response)
@@ -85,15 +87,17 @@ crossorigin="anonymous"></script>
 
     $("form").submit(function(e){
         e.preventDefault()
-        let email = document.getElementById("email").value;
-        let amount = document.getElementById("amount").value;
+        const email = document.getElementById("email").value;
+        const amount = document.getElementById("amount").value;
+        const transactionId = Math.floor(Math.random() * 99999999)
         XpressPay.InitialisePayment({
-            amount: amount + "",
-            transactionId: "1234567",
+            amount: amount + ".00",
+            transactionId: transactionId + "",
             email: email,
+            mode:"Debug",
             publicKey: "XPPUBK-e634d14d9ded04eaf05d5b63a0a06d2f-X",
             currency: document.getElementById("country").value,
-            callbackUrl: window.location.href,
+            callbackUrl: `${window.location.href}?transactionid=${transactionId}`,
             metadata: [
                 {
                     name: "string",
