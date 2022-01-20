@@ -93,7 +93,8 @@ crossorigin="anonymous"></script>
 <script data-main="scripts/app" src="https://pgsandbox.xpresspayments.com:8020/xpressPay.min.js"></script> 
 <script>
   $(document).ready(function(){
-   const transactionId = 12334567 //From the callback url/current url or any other way you can better implement it;
+    const params = new URLSearchParams(window.location.search);
+    const transactionId = params.get('transactionid'); //From the callback url/current url or any other way you can better implement it;
  XpressPay.VerifyPayment({
         publicKey: "XPPUBK-19995e83ba654840be35242359b66f8c-X",
         transactionId: transactionId,
