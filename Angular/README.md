@@ -49,10 +49,10 @@ export class AppComponent {
       amount: "1000",
       transactionId: transactionId,
       email: "sample@test.com",
-      publicKey: "xxxxxxxxxxxxx",
+      publicKey: "XPPUBK-19995e83ba654840be35242359b66f8c-X",
       currency: "NGN",
       mode: "Debug",
-      callbackUrl: window.location.href,
+      callbackUrl: `${window.location.href}?transactionid=${transactionId}`,
       productId:"1001",
       productDescription:"MTN",
       metadata: [
@@ -71,9 +71,10 @@ export class AppComponent {
     });
   };
    GetPaymentDescription() : string {
-   const transactionId = 12334567 //From the callback/current url/ or any other way you can better implement it;
+    const params = new URLSearchParams(window.location.search);
+    const transactionId = params.get('transactionid');
   XPay.VerifyPayment({
-    publicKey: "xxxxxxxxxxxxxxx",
+    publicKey: "XPPUBK-19995e83ba654840be35242359b66f8c-X",
     transactionId: transactionId,
     mode: "Debug",
   }).then((response :any) => {

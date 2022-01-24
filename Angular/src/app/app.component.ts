@@ -15,10 +15,12 @@ export class AppComponent {
       amount: "1000",
       transactionId: transactionId,
       email: "sample@test.com",
-      publicKey: "XPPUBK-e634d14d9ded04eaf05d5b63a0a06d2f-X",
+      publicKey: "XPPUBK-19995e83ba654840be35242359b66f8c-X",
       currency: "NGN",
       mode: "Debug",
-      callbackUrl: window.location.href,
+      productId: "1001",
+      productDescription: "test",
+      callbackUrl: `${window.location.href}?transactionid=${transactionId}`,
       metadata: [
         {
           name: "sample",
@@ -36,13 +38,11 @@ export class AppComponent {
     });
   };
    GetPaymentDescription() : string {
-    const tranId =
-    localStorage.getItem("tranId") === null
-      ? ""
-      : localStorage.getItem("tranId");
+    const params = new URLSearchParams(window.location.search);
+    const transactionId = params.get('transactionid');
   XPay.VerifyPayment({
-    publicKey: "XPPUBK-e634d14d9ded04eaf05d5b63a0a06d2f-X",
-    transactionId: tranId,
+    publicKey: "XPPUBK-19995e83ba654840be35242359b66f8c-X",
+    transactionId: transactionId,
     mode: "Debug",
   }).then((response :any) => {
     let amount = response?.data?.amount;
