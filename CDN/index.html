@@ -69,34 +69,39 @@
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <!-- <script type="module" src="./index.js"></script> --->
+ 
+<!-- <script type="module" src="./index.js"></script> --->
   <!--For Production Use the commented script -->
 <!-- <script data-main="scripts/app" src="https://myxpresspay.com:6002/xpressPay.min.js"></script>  -->
-  <script data-main="scripts/app" src="https://pgsandbox.xpresspayments.com:8020/xpressPay.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      const params = new URLSearchParams(window.location.search);
-      const tranId = params.get('transactionid');
-      XpressPay.VerifyPayment({
+<script data-main="scripts/app" src="https://pgsandbox.xpresspayments.com:8020/xpressPay.min.js"></script>
+  
+<script>
+  $(document).ready(function(){
+    const params = new URLSearchParams(window.location.search);
+    const transactionId = params.get('transactionid'); //From the callback url/current url or any other way you can better implement it;
+ XpressPay.VerifyPayment({
         publicKey: "XPPUBK-19995e83ba654840be35242359b66f8c-X",
-        transactionId: tranId ?? "",
+        transactionId: transactionId,
         mode: "Debug",
       }).then((response) => {
-        console.log("object", response)
         let amount = response?.data?.amount;
-        if (amount) {
-          $("#amount").text("You have payed " + amount)
+        console.log(amount);
+           if (response.success) {
+               //Transaction successful at payment gateway
+            $("#amount").text("You have payed NGN"  + amount + " successfully");
         } else {
-          $("#amount").text("")
+          //Transaction not successful at payment gateway
+          if(transactionId)
+            $("#amount").text("Transaction not successful. Try again later")
         }
       });
-      $("form").submit(function (e) {
+
+ $("form").submit(function (e) {
         e.preventDefault();
-        var amount = $("#fee").val();
         var email = $("#email").val(); 
+        var amount = $("#fee").val();
         $("#pay").val("Paying.........."); 
         const transactionId = Math.floor(Math.random() * 99999999)
-        console.log(amount);
         XpressPay.InitialisePayment({
           amount: amount + ".00",
           transactionId: transactionId + "",
@@ -125,7 +130,6 @@
 
     });
   </script>
-
 </body>
 
 </html>
