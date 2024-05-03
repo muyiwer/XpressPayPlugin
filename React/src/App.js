@@ -14,7 +14,7 @@ function App() {
     let transactionId = "Test" + Math.floor(Math.random() * 1000000);
     setState({ ...state, loading: true });
     try {
-      XPay.InitialisePayment({
+      XPay.initializePayment({
         amount: "1000",
         transactionId: transactionId,
         email: "sample@test.com",
@@ -51,7 +51,7 @@ function App() {
           ? ""
           : localStorage.getItem("tranId");
       console.log(tranId);
-      XPay.VerifyPayment({
+      XPay.verifyPayment({
         publicKey: "xxxxxxxxxxxxxx",
         transactionId: tranId,
         mode: "Debug",

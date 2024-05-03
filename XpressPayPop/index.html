@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XpressPayPop</title>
+</head>
+
+<body>
+
+    <button id="pay">Open Modal</button>
+
+
+
+    <script src="./xpresspay.js"></script>
+    <script>
+        var btn = document.getElementById("pay");
+        btn.onclick = function () {
+            const xpressPay = new XpressPayPop();
+            xpressPay.newTransaction({
+                onSuccess: (transaction) => {
+                    console.log("success", transaction)
+                },
+                onError: (transaction) => {
+                    console.log("error", transaction)
+                },
+                onCancel: () => {
+                    console.log("closed")
+                },
+                request: {
+                    amount: "2000.00",
+                    transactionId: Math.floor(Math.random() * 1000000),
+                    email: "sample@mail.com",
+                    publicKey: "xxxxxxxxxxxxxxxxxxxxxxxxxx",
+                    currency: "NGN",
+                    mode: "Live",
+                    productId: "1001",
+                    applyConviniencyCharge: true,
+                    productDescription: "MTN",
+                    bodyColor: "#0000",
+                    buttonColor: "#0000",
+                    footerText: "Powered by Test Ltd",
+                    footerLink: "http://test.com",
+                    footerLogo: "http://test.com/test.png",
+                    metadata: [
+                        {
+                            "name": "sample",
+                            "value": "test",
+                        },
+                    ],
+                }
+            });
+       
+        }
+
+    </script>
+
+</body>
+
+</html>
