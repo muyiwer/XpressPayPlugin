@@ -17,7 +17,7 @@ This library can be implemented into your application via CDN using Javascript o
 
 ### Script Source
 #### Production : https://myxpresspay.com:6002/xpressPay.min.js
-#### Test: https://pgsandbox.xpresspayments.com:8020/xpressPay.min.js
+#### Test: https://pgsandbox.xpresspayments.com:8083/xpressPay.min.js
 
 
 ```html
@@ -90,7 +90,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 crossorigin="anonymous"></script>
 <!--For Production Use the commented script -->
 <!-- <script data-main="scripts/app" src="https://myxpresspay.com:6002/xpressPay.min.js"></script>  -->
-<script data-main="scripts/app" src="https://pgsandbox.xpresspayments.com:8020/xpressPay.min.js"></script> 
+<script data-main="scripts/app" src=" https://pgsandbox.xpresspayments.com:8083/xpressPay.min.js"></script> 
 <script>
   $(document).ready(function(){
     const params = new URLSearchParams(window.location.search);
