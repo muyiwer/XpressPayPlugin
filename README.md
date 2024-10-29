@@ -210,13 +210,13 @@ Please checkout [Vue Documentation](https://github.com/muyiwer/XpressPayPlugin/t
 Please checkout [Via CDN Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/c%23) for how you can implement it via C#
 
 ### 5. Using Java
-Please checkout [Via CDN Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/java) for how you can implement it via java
+Please checkout [Via Java Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/java) for how you can implement it via java
 
 ### 6. Using PHP
-Please checkout [Via CDN Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/php) for how you can implement it via java
+Please checkout [Via php Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/php) for how you can implement it via java
 
 ### 7. Using Python
-Please checkout [Via CDN Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/python) for how you can implement it via python
+Please checkout [Via Python Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/python) for how you can implement it via python
 
 ### 8. Using CDN
 Please checkout [Via CDN Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/CDN) for how you can implement it via CDN
