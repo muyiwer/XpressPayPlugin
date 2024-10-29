@@ -14,13 +14,13 @@ function App() {
     let transactionId = "Test" + Math.floor(Math.random() * 1000000);
     setState({ ...state, loading: true });
     try {
-      XPay.initializePayment({
+      XPay.InitialisePayment({
         amount: "1000",
         transactionId: transactionId,
         email: "sample@test.com",
         publicKey: "xxxxxxxxxxxxxxxxxxxx",
         currency: "NGN",
-        mode: "Debug",
+        mode: "Live",
         callbackUrl: window.location.href,
         metadata: [
           {
@@ -40,7 +40,7 @@ function App() {
         }
       });
     } catch (error) {
-      //handle error
+      console.log(error)
     }
   }
 
@@ -51,10 +51,10 @@ function App() {
           ? ""
           : localStorage.getItem("tranId");
       console.log(tranId);
-      XPay.verifyPayment({
+      XPay.VerifyPayment({
         publicKey: "xxxxxxxxxxxxxx",
         transactionId: tranId,
-        mode: "Debug",
+        mode: "Live",
       }).then((response) => {
         let amount = response?.data?.amount;
         if (amount) {

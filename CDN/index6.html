@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<style>
+    body {
+        margin-top: 60px;
+        width: 30%;
+        left: 0;
+        right: 0;
+        margin-left: 500px;
+    }
+
+    input[type=text],
+    input[type=email],
+    input[type=number],
+    select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+</style>
+
+<body>
+
+    <h3>Payment Page (International Payment Test)</h3>
+
+    <div>
+        <p style="text-align: center;">
+            <div id="myAlertSuccess" style="display: none; padding: 15px; background-color: green; color: white; margin-bottom: 15px; border-radius: 4px; position: relative;">
+                <strong>Success!</strong> Transaction successful
+                <span style="position: absolute; top: 10px; right: 20px; cursor: pointer; font-size: 20px;" onclick="document.getElementById('myAlertSuccess').style.display='none';">&times;</span>
+            </div>
+                <div id="myAlertError" style="display: none; padding:15px; background-color: #f44336; color: white; margin-bottom: 15px; border-radius: 4px; position: relative;">
+                    <strong>Error!</strong> Transaction not successful
+                    <span style="position: absolute; top: 10px; right: 20px; cursor: pointer; font-size: 20px;" onclick="document.getElementById('myAlertError').style.display='none';">&times;</span>
+                </div>
+        </p>
+        <form method="POST">
+            <label for="fname">Email</label>
+            <input required type="email" id="email" name="firstname" placeholder="Your email..">
+
+            <label for="Amount">Amount</label>
+            <input required type="number" id="fee" name="amount" placeholder="Amount">
+            <label for="Amount">Currency</label>
+            <select required id="country" name="country">
+                <option disabled selected value="NGN">----Select Currency----</option>
+                <option value="NGN">Naira</option>
+                <option value="USD">Dollar</option>
+                <option value="GBP">Pounds</option>
+            </select>
+            <input id="pay" type="submit" value="Pay">
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- <script type="module" src="./index.js"></script> --->
+    <!--For Production Use the commented script -->
+    <!-- <script data-main="scripts/app" src="https://myxpresspay.com:6002/xpressPay.min.js"></script>  -->
+    <script data-main="scripts/app" src="https://myxpresspay.com:6002/xpressPay.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            const params = new URLSearchParams(window.location.search);
+            let productId = ""
+            const transactionId = params.get('transactionid'); //From the callback url/current url or any other way you can better implement it;
+            $('#state').change(function () {
+                productId = $('#state').val();
+            });
+            if (window.location.href?.includes("?transactionid")) {
+                XpressPay.VerifyPayment(
+                    {
+                        publicKey: "XPPUBK-c1401fa8ca844d0aa16105dbeb2426b3-X",
+                        transactionId: transactionId,
+                        mode: "Live",
+                    })
+                    .then((response) => {
+                        let amount = response?.data?.amount;
+                        if (response.success) {
+                            //Transaction successful at payment gateway
+                            document.getElementById('myAlertSuccess').style.display='block';
+                        }
+                        else {
+                            //Transaction not successful at payment gateway
+                            document.getElementById('myAlertError').style.display='block';
+                        }
+                    }).catch(error => { document.getElementById('myAlertError').style.display='block'; });
+            } else {
+                $("#transactionId").text("")
+            }
+
+            $("form").submit(function (e) {
+                e.preventDefault();
+                var email = $("#email").val();
+                var amount = $("#fee").val();
+                $("#pay").val("Paying..........");
+                const transactionId = `${Math.floor(Math.random() * 99999999)}`
+
+                XpressPay.InitialisePayment({
+                    amount: amount + ".00",
+                    transactionId: transactionId + "",
+                    email: email, mode: "Live",
+                    publicKey: "XPPUBK-c1401fa8ca844d0aa16105dbeb2426b3-X",
+                    currency: document.getElementById("country").value,
+                    productId: "MTN",
+                    productDescription: "MTN",
+                    callbackUrl: `${window.location.href.split('?')[0]}?transactionid=${transactionId}`,
+                    metadata: [{ name: "string", value: "string" }]
+                })
+                    .then(response => {
+                        if (response.success) { window.location.href = "https://myxpresspay.com:6003/" + response.data.reference }
+                        else {
+                            window.location.href = "https://myxpresspay.com:6003/" + response.data.reference
+                        }
+                    })
+
+            });
+        });
+    </script>
+</body>
+
+</html>

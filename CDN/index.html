@@ -45,7 +45,7 @@
 
 <body>
 
-  <h3>Merchant APP(PG Test)</h3>
+  <h3>Payxpress(International Payment Test)</h3>
 
   <div>
     <p style="text-align: center;"><span id="description"> </span> <span id="amount" style="font-weight: bold;"></span>
@@ -73,16 +73,16 @@
 <!-- <script type="module" src="./index.js"></script> --->
   <!--For Production Use the commented script -->
 <!-- <script data-main="scripts/app" src="https://myxpresspay.com:6002/xpressPay.min.js"></script>  -->
-<script data-main="scripts/app" src="https://pgsandbox.xpresspayments.com:8020/xpressPay.min.js"></script>
+<script data-main="scripts/app" src="https://myxpresspay.com:6002/xpressPay.min.js"></script>
   
 <script>
   $(document).ready(function(){
     const params = new URLSearchParams(window.location.search);
     const transactionId = params.get('transactionid'); //From the callback url/current url or any other way you can better implement it;
  XpressPay.VerifyPayment({
-        publicKey: "XPPUBK-19995e83ba654840be35242359b66f8c-X",
+        publicKey: "XPPUBK-c1401fa8ca844d0aa16105dbeb2426b3-X",
         transactionId: transactionId,
-        mode: "Debug",
+        mode: "Live",
       }).then((response) => {
         let amount = response?.data?.amount;
         console.log(amount);
@@ -106,16 +106,16 @@
           amount: amount + ".00",
           transactionId: transactionId + "",
           email: email,
-          mode: "Debug",
-          publicKey: "XPPUBK-19995e83ba654840be35242359b66f8c-X",
+          mode: "Live",
+          publicKey: "XPPUBK-c1401fa8ca844d0aa16105dbeb2426b3-X",
           currency: document.getElementById("country").value,
-          productId: "1001",
-          productDescription: "test",
+          productId: "Mastercard",
+          productDescription: "International payment",
           callbackUrl: `${window.location.href}?transactionid=${transactionId}`,
           metadata: [
             {
-              name: "string",
-              value: "string"
+              name: "Payment Type",
+              value: "International Payment"
             }
           ]
         }).then(response => {
