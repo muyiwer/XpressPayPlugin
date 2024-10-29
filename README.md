@@ -206,13 +206,25 @@ Please checkout [Angular Documentation](https://github.com/muyiwer/XpressPayPlug
 ### 3. Using Vue
 Please checkout [Vue Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/Vuejs) for how you can implement it on vue
 
-### 4. Using CDN
+### 4. Using C#
+Please checkout [Via CDN Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/c%23) for how you can implement it via C#
+
+### 5. Using Java
+Please checkout [Via CDN Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/java) for how you can implement it via java
+
+### 6. Using PHP
+Please checkout [Via CDN Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/php) for how you can implement it via java
+
+### 7. Using Python
+Please checkout [Via CDN Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/python) for how you can implement it via python
+
+### 8. Using CDN
 Please checkout [Via CDN Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/CDN) for how you can implement it via CDN
 
-### 5. Using Direct API Integration
+### 9. Using Direct API Integration
 Please checkout [Direct API Integration Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/APIintegration) to integrate directly with the API.
 
-### 6. Using Joomla J2Stores
+### 10. Using Joomla J2Stores
 Please checkout [J2Stores Plugin Documentation](https://github.com/Xpresspayment/XpayPluginJoomla) for how you can implement it our plugin using javascript framework and direct integration
 
 ## How can I thank you?
