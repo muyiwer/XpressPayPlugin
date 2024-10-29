@@ -207,7 +207,7 @@ Please checkout [Angular Documentation](https://github.com/muyiwer/XpressPayPlug
 Please checkout [Vue Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/Vuejs) for how you can implement it on vue
 
 ### 4. Using C#
-Please checkout [Via CDN Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/c%23) for how you can implement it via C#
+Please checkout [Via C# Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/c%23) for how you can implement it via C#
 
 ### 5. Using Java
 Please checkout [Via Java Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/java) for how you can implement it via java
