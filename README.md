@@ -218,13 +218,16 @@ Please checkout [Via php Documentation](https://github.com/muyiwer/XpressPayPlug
 ### 7. Using Python
 Please checkout [Via Python Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/python) for how you can implement it via python
 
-### 8. Using CDN
+### 8. Using Woo Commerce
+Please checkout [Via Woo commerce Documentation](https://wordpress.org/plugins/xpresspay-payment-gateway/) for how you can implement it via Woo commerce
+
+### 9. Using CDN
 Please checkout [Via CDN Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/CDN) for how you can implement it via CDN
 
-### 9. Using Direct API Integration
+### 10. Using Direct API Integration
 Please checkout [Direct API Integration Documentation](https://github.com/muyiwer/XpressPayPlugin/tree/main/APIintegration) to integrate directly with the API.
 
-### 10. Using Joomla J2Stores
+### 11. Using Joomla J2Stores
 Please checkout [J2Stores Plugin Documentation](https://github.com/Xpresspayment/XpayPluginJoomla) for how you can implement it our plugin using javascript framework and direct integration
 
 ## How can I thank you?
