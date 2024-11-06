@@ -67,12 +67,14 @@ To initialize the transaction, you'll need to pass information such as email, fi
 ##### Response body
 ```json
 {
-  "responseCode":"00",
-  "responseMessage":"sucessfully initialized payment",
-  "data": {
-                "authorizeUrl": "http://xpay.com/xxxxxxxx", 
-                "reference": "xxxxxxxx",
-          }
+    "$id": "1",
+    "responseCode": "00",
+    "responseMessage": "Authorization URL created",
+    "data": {
+        "$id": "2",
+        "paymentUrl": "https://myxpresspay.com:6003/xxxxxxx",
+        "accessCode": "xxxxxxx"
+    }
 }
 ```
 |Param       | Type                 | Description                      
@@ -106,51 +108,31 @@ To verify payment, you'll need to pass information such as publicKey, transactio
 ##### Response body
 ```json
 {
-  "responseCode":"00",
-  "responseMessage":"sucessfully initialized payment",
-   "data": {
-    "$id": "2",
-    "amount": "10.00",
-    "currency": "NGN",
-    "status": "Transaction Successful",
-    "isSuccessful":true,
-    "paymentType":"Card",
-    "gatewayResponse": "Transaction Successful. Approved",
-    "transactionId": "1234567",
-    "histories": {
-      "$id": "3",
-      "$values": [
-        {
-          "$id": "4",
-          "type": "action",
-          "message": "Filled these fields: card number, card expiry, card cvv and card pin",
-          "date": "15 Sep 2021",
-          "time": "08:14 AM"
+    "$id": "1",
+    "responseCode": "00",
+    "responseMessage": "Transaction retrieved successfully",
+    "data": {
+        "$id": "2",
+        "amount": "90.00",
+        "paymentType": "Transfer",
+        "currency": "NGN",
+        "status": "00",
+        "isSuccessful": true,
+        "gatewayResponse": "Transaction Successful. 00",
+        "transactionId": "12345678",
+        "productId": null,
+        "productDescription": null,
+        "paymentDate": "10/28/2024 8:00:18 PM",
+        "meataData": "null",
+        "callBackUrl": null,
+        "paymentReference": "xxxxxxxxxx",
+        "recurringID": null,
+        "histories": {
+            "$id": "3",
+            "$values": []
         },
-        {
-          "$id": "5",
-          "type": "action",
-          "message": "Attempt to pay",
-          "date": "15 Sep 2021",
-          "time": "08:17 AM"
-        },
-         {
-          "$id": "6",
-          "type": "success",
-          "message": "Successful transaction",
-          "date": "15 Sep 2021",
-          "time": "08:18 AM"
-        },
-        {
-          "$id": "7",
-          "type": "redirect",
-          "message": "Redirected user back to your app",
-          "date": "15 Sep 2021",
-          "time": "08:19 AM"
-        }
-      ]
+        "merchantId": 0
     }
-  }
 }
 ```
 |Param       | Type                 | Description                      
