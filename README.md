@@ -66,6 +66,8 @@ To initialize the transaction, you'll need to pass information such as email, fi
       "productId":"1001",
       "applyConviniencyCharge":true,
       "productDescription":"MTN",
+      "isSplitpayment": true,
+      "splitPaymentReference": "string",
       "bodyColor": "#0000",
       "buttonColor": "#0000",
       "footerText": "Powered by Test Ltd",

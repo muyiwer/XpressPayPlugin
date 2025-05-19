@@ -124,6 +124,8 @@ To verify payment, you'll need to pass information such as publicKey, transactio
         "transactionId": "12345678",
         "productId": null,
         "productDescription": null,
+        "isSplitpayment": true,
+        "splitPaymentReference": "string",
         "paymentDate": "10/28/2024 8:00:18 PM",
         "meataData": "null",
         "callBackUrl": null,

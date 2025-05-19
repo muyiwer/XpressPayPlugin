@@ -7,50 +7,47 @@ A Javasript library for integrating with the XpressPay Pop.
 ## Installation
 
 ```sh
-npm install xpresspay-pop
+npm install xpresspay
 ```
 
 ```javascript
-import XpressPayPop from "xpresspay-pop";
-
-// Initialize Xpress Pay pop up
-const xpressPay = new XpressPayPop();
+import { payWithXpressPay, PayWithXpressPayConfig } from "xpresspay";
 
 // Example: Initialize Payment popup
-  xpressPay.newTransaction({
-                onSuccess: (transaction) => {
-                     // Payment complete! transactionId: transaction.transactionId 
-                },
-                onError: (transaction) => {
-                    // Payment failed! transactionId: transaction.transactionId 
-                },
-                onCancel: () => {
-                     // user closed popup
-                },
-                authorizeUrl: "http://myxpresspay.com:6003/******",
-                request: {
-                    amount: "2000.00",
-                    transactionId: Math.floor(Math.random() * 1000000),
-                    email: "sample@mail.com",
-                    publicKey: "xxxxxxxxxxxxxxxxxxxxxxxxxx",
-                    currency: "NGN",
-                    mode: "Live",
-                    productId: "1001",
-                    applyConviniencyCharge: true,
-                    productDescription: "MTN",
-                    bodyColor: "#0000",
-                    buttonColor: "#0000",
-                    footerText: "Powered by Test Ltd",
-                    footerLink: "http://test.com",
-                    footerLogo: "http://test.com/test.png",
-                    metadata: [
-                        {
-                            "name": "sample",
-                            "value": "test",
-                        },
-                    ],
-                }
-            });
+payWithXpressPay({
+  onSuccess: (response) => {
+    console.log(response);
+  },
+  onError: (error) => {
+    console.log(error);
+  },
+  authorizationUrl: "http://myxpresspay.com:6003/******",
+  amount: "2000.00",
+  transactionId: Math.floor(Math.random() * 1000000),
+  email: "sample@mail.com",
+  public_key: "xxxxxxxxxxxxxxxxxxxxxxxxxx",
+  callbackurl: "https://example.com",
+  currency: "NGN",
+  productId: "1001",
+  applyConviniencyCharge: true,
+  isRecurring: false,
+  DISPLAY_MODE: "POPUP" | "PAGE",
+  ENV_MODE: "DEBUG" | "TEST" | "LIVE",
+  productDescription: "MTN",
+  isSplitpayment: false,
+  splitPaymentReference: "",
+  bodyColor: "#0000",
+  buttonColor: "#0000",
+  footerText: "Powered by Test Ltd",
+  footerLink: "http://test.com",
+  footerLogo: "http://test.com/test.png",
+  metadata: [
+    {
+      name: "sample",
+      value: "test",
+    },
+  ],
+});
        
   ```
 

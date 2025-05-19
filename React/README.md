@@ -57,6 +57,8 @@ function App() {
         callbackUrl: `${window.location.href}/transactionId=${transactionId}`,
         productId:"1001",
         productDescription:"MTN",
+        isSplitpayment: false,
+        splitPaymentReference: "",
         metadata: [
           {
             name: "sample",
