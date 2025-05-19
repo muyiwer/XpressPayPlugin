@@ -44,6 +44,8 @@ To initialize the transaction, you'll need to pass information such as email, fi
 | productId      | `string`  |  undefined    | `false`   | unique identification number of the product your customer want to pay to.
 | applyConviniencyCharge      | `boolean`  |  undefined    | `false`   | specify whether to apply charge for this customer transaction.
 | productDescription     | `string`  |  undefined    | `false`   | description number of the product your customer want to pay to.
+| splitPaymentReference     | `string`  |  null    | `false`   | A unique identifier generated when setting up a split payment on the Xpress platform. Used to track and manage the split transaction.
+| isSplitpayment     | `boolean`  |  null    | `false`   | Indicates whether the transaction should be split during settlement. Set to `true` to enable split payment.
 | mode      | `string`  |  `Debug`    | `true`   | Allowed values are `Debug` or `Live`.
 | callBackUrl      | `string`  |  your current url page    | `false`   | CallbackUrl is the url you want your customer to be redirected to when payment is successful. The default url is the page url where customer intialized payment.
 | bodyColor     | `string`  |  null    | `false`   | your prefered customized color for the payment page body.

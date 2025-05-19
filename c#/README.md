@@ -75,6 +75,8 @@ Defines the payment initialization request structure
 | productDescription          | `string?`             | Description of the product/service.
 | callbackUrl          | `string`             | URL to redirect to after payment.
 | metadata          | `List<Metadata>?`             | Additional data in key-value format.
+| splitPaymentReference     | `string`  |  null    | `false`   | A unique identifier generated when setting up a split payment on the Xpress platform. Used to track and manage the split transaction.
+| isSplitpayment     | `boolean`  |  null    | `false`   | Indicates whether the transaction should be split during settlement. Set to `true` to enable split payment.
 
 ### Metadata
 
