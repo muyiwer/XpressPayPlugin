@@ -29,8 +29,11 @@ To initialize the transaction, you'll need to pass information such as email, fi
       "callbackUrl": "www.test.com/?transactionId=12345678",
       "productId":"1001",
       "applyConviniencyCharge":true,
+      "isApiUser": false,
       "productDescription":"MTN",
       "isSplitpayment": true,
+      "logoUrl": "https://logo.png",
+      "merchantName":"Test merchant",
       "splitPaymentReference": "string",
       "bodyColor": "#0000",
       "buttonColor": "#0000",
@@ -56,6 +59,9 @@ To initialize the transaction, you'll need to pass information such as email, fi
 | callBackUrl      | `string`  |  your current url page    | `false`   | CallbackUrl is the url you want your customer to be redirected to when payment is successful. The default url is the page url where customer intialized payment.
 | splitPaymentReference     | `string`  |  null    | `false`   | A unique identifier generated when setting up a split payment on the Xpress platform. Used to track and manage the split transaction.
 | isSplitpayment     | `boolean`  |  null    | `false`   | Indicates whether the transaction should be split during settlement. Set to `true` to enable split payment.
+| isApiUser     | `boolean`  |  null    | `false`   | A flag that tells us if you’re connecting directly to our API. Set this to `true` if you’re integrating the API yourself..
+| merchantName     | `string`  |  null    | `false`   | The name of your business or merchant account. This will be displayed to users during checkout.
+| logoUrl     | `string`  |  null    | `false`   | A link to your company or merchant logo. The logo will appear on the payment page to help users recognize your brand..
 | bodyColor     | `string`  |  null    | `false`   | your prefered customized color for the payment page body.
 | buttonColor     | `string`  |  null    | `false`   |  your prefered customized color for the payment page buttons.
 | footerText     | `string`  |  null    | `false`   |  your prefered customized text for the payment page footer.
