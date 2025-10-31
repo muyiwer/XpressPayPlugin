@@ -99,8 +99,8 @@ Multiple items should be separated by `&`:
   "email": "student@university.edu",
   "publicKey": "xxxxxxxxxxxxxxxxxxxxxxxxxx",
   "currency": "NGN",
-  "isSplitpayment": true,
-  "splitPaymentReference": "SPLIT_MAIN_REF_123",
+  "isSplitpayment": false,
+  "splitPaymentReference": null,
   "metadata": [
     {
       "name": "Purpose",
