@@ -59,7 +59,7 @@ To initialize the transaction, you'll need to pass information such as email, fi
 | callBackUrl      | `string`  |  your current url page    | `false`   | CallbackUrl is the url you want your customer to be redirected to when payment is successful. The default url is the page url where customer intialized payment.
 | splitPaymentReference     | `string`  |  null    | `false`   | A unique identifier generated when setting up a split payment on the Xpress platform. Used to track and manage the split transaction.
 | isSplitpayment     | `boolean`  |  null    | `false`   | Indicates whether the transaction should be split during settlement. Set to `true` to enable split payment.
-| isApiUser     | `boolean`  |  null    | `false`   | A flag that tells us if you’re connecting directly to our API. Set this to `true` if you’re integrating the API yourself..
+| isApiUser     | `boolean`  |  null    | `false`   | A flag that tells us if you're connecting directly to our API. Set this to `true` if you're integrating the API yourself..
 | merchantName     | `string`  |  null    | `false`   | The name of your business or merchant account. This will be displayed to users during checkout.
 | logoUrl     | `string`  |  null    | `false`   | A link to your company or merchant logo. The logo will appear on the payment page to help users recognize your brand..
 | bodyColor     | `string`  |  null    | `false`   | your prefered customized color for the payment page body.
@@ -67,6 +67,64 @@ To initialize the transaction, you'll need to pass information such as email, fi
 | footerText     | `string`  |  null    | `false`   |  your prefered customized text for the payment page footer.
 | footerLogo     | `string`  |  null    | `false`   |  your prefered customized logo for the payment page footer.
 | metadata      | `object`  |  empty `object`    | `false`   | Object containing any extra information you want recorded with the transaction.
+
+
+#### Using Split References in Metadata
+
+When using split payments with the `isSplitpayment` flag set to `true`, you can include split reference identifiers in the metadata to track individual sub-payments. This is particularly useful when a single transaction needs to be divided among multiple purposes or recipients.
+
+##### Split Reference Format
+
+Each item in the metadata `Purpose` field should follow this format:
+
+```
+description=amount_splitReference
+```
+
+Multiple items should be separated by `&`:
+
+```json
+{
+  "name": "Purpose",
+  "value": "school fee=4000_bd8ce3383dc08bf4bfcd&Logbook for SIWES=1000_5f7a31b8a41b93c2e1de"
+}
+```
+
+##### Example Usage
+
+```json
+{
+  "amount": "5000.00",
+  "transactionId": "TXN123456",
+  "email": "student@university.edu",
+  "publicKey": "xxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "currency": "NGN",
+  "isSplitpayment": true,
+  "splitPaymentReference": "SPLIT_MAIN_REF_123",
+  "metadata": [
+    {
+      "name": "Purpose",
+      "value": "school fee=4000_bd8ce3383dc08bf4bfcd&Logbook for SIWES=1000_5f7a31b8a41b93c2e1de"
+    }
+  ]
+}
+```
+
+##### Split Reference Components
+
+| Component | Description | Example |
+|-----------|-------------|---------|
+| **description** | The purpose or item name for the sub-payment | `school fee`, `Logbook for SIWES` |
+| **amount** | The amount allocated to this sub-payment | `4000`, `1000` |
+| **splitReference** | Unique identifier for tracking this specific sub-payment | `bd8ce3383dc08bf4bfcd`, `5f7a31b8a41b93c2e1de` |
+
+##### Important Notes
+
+- Each sub-payment must have a unique `splitReference` value for proper tracking and reconciliation
+- The sum of all sub-payment amounts should equal the total transaction amount
+- Split references are alphanumeric strings that uniquely identify each portion of the split payment
+- Use the `&` character to separate multiple sub-payments in the `Purpose` field
+
 
 ##### Request header
 |Name       | Value                | Required | Description   
@@ -183,5 +241,3 @@ Don't forget to [follow me on twitter](https://twitter.com/muyiTechBadtGuy)!
 
 Thanks!
 Olumuyiwa Aro
-
-
