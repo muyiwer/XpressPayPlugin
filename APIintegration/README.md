@@ -69,7 +69,7 @@ To initialize the transaction, you'll need to pass information such as email, fi
 | metadata      | `object`  |  empty `object`    | `false`   | Object containing any extra information you want recorded with the transaction.
 
 
-#### Using Split References in Metadata
+#### Using Split References in Metadata for Multiple Splitting
 
 When using split payments with the `isSplitpayment` flag set to `true`, you can include split reference identifiers in the metadata to track individual sub-payments. This is particularly useful when a single transaction needs to be divided among multiple purposes or recipients.
 
