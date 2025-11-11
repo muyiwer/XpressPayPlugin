@@ -9,6 +9,7 @@ This API can be integrated into any application
 ### Base Urls
 #### Test
 https://pgsandbox.xpresspayments.com:8090/
+use XPPUBK-3c0bb71eaac24850b777cd672c223bbc-X public key for testing
 #### Production
 https://myxpresspay.com:6004/
 

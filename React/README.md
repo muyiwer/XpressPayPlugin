@@ -51,7 +51,7 @@ function App() {
         amount: "1000",
         transactionId: transactionId,
         email: "sample@test.com",
-        publicKey: "xxxxxxxxxxxxxxxxxxxx",
+        publicKey: "XPPUBK-3c0bb71eaac24850b777cd672c223bbc-X",
         currency: "NGN",
         mode: "Debug",
         callbackUrl: `${window.location.href}/transactionId=${transactionId}`,

@@ -96,7 +96,7 @@ crossorigin="anonymous"></script>
     const params = new URLSearchParams(window.location.search);
     const transactionId = params.get('transactionid'); //From the callback url/current url or any other way you can better implement it;
  XpressPay.VerifyPayment({
-        publicKey: "XPPUBK-19995e83ba654840be35242359b66f8c-X",
+        publicKey: "XPPUBK-3c0bb71eaac24850b777cd672c223bbc-X",
         transactionId: transactionId,
         mode: "Debug",
       }).then((response) => {
