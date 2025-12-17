@@ -386,6 +386,111 @@ function processMetadata($metadata) {
 ?>
 ```
 
+##### C# ASP.NET Core Example
+```csharp
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Text;
+
+[ApiController]
+[Route("api/[controller]")]
+public class WebhookController : ControllerBase
+{
+    private const int YOUR_MERCHANT_ID = 123;
+    
+    [HttpPost("xpresspay")]
+    public async Task<IActionResult> XpressPayWebhook()
+    {
+        try
+        {
+            // Read the raw request body
+            using var reader = new StreamReader(Request.Body, Encoding.UTF8);
+            var requestBody = await reader.ReadToEndAsync();
+            
+            // Deserialize the webhook payload
+            var payload = JsonConvert.DeserializeObject<WebhookPayload>(requestBody);
+            
+            // Verify the webhook
+            if (!VerifyWebhook(payload))
+            {
+                return BadRequest("Invalid webhook");
+            }
+            
+            // Process the payment notification
+            if (payload.IsSuccessful && payload.Status == "00")
+            {
+                // Payment successful
+                await UpdatePaymentStatus(payload.TransactionId, "completed");
+                
+                // Process metadata if needed
+                var metadata = JsonConvert.DeserializeObject<List<MetadataItem>>(payload.MetaData);
+                ProcessMetadata(metadata);
+            }
+            else
+            {
+                // Payment failed
+                await UpdatePaymentStatus(payload.TransactionId, "failed");
+            }
+            
+            // Always respond with 200 OK
+            return Ok("OK");
+        }
+        catch (Exception ex)
+        {
+            // Log the error but still return 200 OK
+            Console.WriteLine($"Webhook processing error: {ex.Message}");
+            return Ok("OK");
+        }
+    }
+    
+    private bool VerifyWebhook(WebhookPayload payload)
+    {
+        // Implement your webhook verification logic
+        return payload.Merchant == YOUR_MERCHANT_ID;
+    }
+    
+    private async Task UpdatePaymentStatus(string transactionId, string status)
+    {
+        // Update your database with the payment status
+        Console.WriteLine($"Updating transaction {transactionId} to {status}");
+        // Add your database update logic here
+    }
+    
+    private void ProcessMetadata(List<MetadataItem> metadata)
+    {
+        // Process additional metadata as needed
+        foreach (var item in metadata)
+        {
+            Console.WriteLine($"Processing metadata: {item.Name} = {item.Value}");
+        }
+    }
+}
+
+// Data models for the webhook payload
+public class WebhookPayload
+{
+    public int Id { get; set; }
+    public string Amount { get; set; }
+    public string PaymentType { get; set; }
+    public string Currency { get; set; }
+    public string Status { get; set; }
+    public bool IsSuccessful { get; set; }
+    public string GatewayResponse { get; set; }
+    public string TransactionId { get; set; }
+    public string TransactionReference { get; set; }
+    public string TransactionDate { get; set; }
+    public string MetaData { get; set; }
+    public int Merchant { get; set; }
+    public string WebhookUrl { get; set; }
+}
+
+public class MetadataItem
+{
+    public string Name { get; set; }
+    public string Value { get; set; }
+}
+```
+
 #### Best Practices
 
 1. **Always respond with HTTP 200**: Return a 200 status code to acknowledge receipt, even if processing fails
