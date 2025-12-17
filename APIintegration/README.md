@@ -155,7 +155,7 @@ Multiple items should be separated by `&`:
 
 
 
-### Verify Payment
+### Verify Payment (POST Method)
 To verify payment, you'll need to pass information such as publicKey, transactionId and mode are required. Here is the full list of parameters you can pass:
 ##### {{baseUrl}}/api/Payments/VerifyPayment
 ##### Request body
@@ -230,6 +230,192 @@ To verify payment, you'll need to pass information such as publicKey, transactio
 | status | `string`  | The status from the transaction made by customer
 | date | `string`  | The date customer or system executed this process
 | time | `string`  | The time the customer or system executed this process
+
+### Webhook Implementation
+
+Webhooks allow XpressPay to notify your application in real-time when payment events occur. This ensures your system stays synchronized with payment status changes without requiring constant polling.
+
+#### Setting Up Webhooks
+
+To receive webhook notifications:
+1. Create an endpoint on your server to receive POST requests
+2. Configure your webhook URL in your XpressPay merchant dashboard
+3. Implement proper verification and processing logic
+
+#### Webhook Payload Structure
+
+When a payment event occurs, XpressPay sends a POST request to your configured webhook URL with the following payload:
+
+```json
+{
+  "Id": 7860602,
+  "Amount": "35500.00",
+  "PaymentType": "Wallet",
+  "Currency": "NGN",
+  "Status": "00",
+  "IsSuccessful": true,
+  "GatewayResponse": "Successful",
+  "TransactionId": "TXN123456789",
+  "TransactionReference": "XPAY123456789",
+  "TransactionDate": "2024-12-10T14:28:00",
+  "MetaData": "[{\"Name\":\"customer_info\",\"Value\":\"John Doe\"},{\"Name\":\"payment_code\",\"Value\":\"PAY001\"},\"Name\":\"environment\",\"Value\":\"production\"}]",
+  "Merchant": 123,
+  "WebhookUrl": "https://yourwebsite.com/api/webhook/xpresspay"
+}
+```
+
+#### Webhook Payload Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `Id` | `number` | Unique internal transaction ID |
+| `Amount` | `string` | Transaction amount |
+| `PaymentType` | `string` | Payment method used (Card, Transfer, Wallet, etc.) |
+| `Currency` | `string` | Transaction currency (NGN) |
+| `Status` | `string` | Transaction status code ("00" = successful) |
+| `IsSuccessful` | `boolean` | Whether the transaction was successful |
+| `GatewayResponse` | `string` | Response message from payment gateway |
+| `TransactionId` | `string` | Your original transaction ID |
+| `TransactionReference` | `string` | XpressPay generated transaction reference |
+| `TransactionDate` | `string` | Transaction timestamp |
+| `MetaData` | `string` | JSON string containing additional transaction data |
+| `Merchant` | `number` | Your merchant ID |
+| `WebhookUrl` | `string` | The webhook URL that received this notification |
+
+#### Sample Webhook Implementation
+
+##### Node.js/Express Example
+```javascript
+const express = require('express');
+const app = express();
+
+app.use(express.json());
+
+app.post('/webhook/xpresspay', (req, res) => {
+  const payload = req.body;
+  
+  // Verify the webhook (implement your verification logic)
+  if (!verifyWebhook(payload)) {
+    return res.status(400).send('Invalid webhook');
+  }
+  
+  // Process the payment notification
+  if (payload.IsSuccessful && payload.Status === '00') {
+    // Payment successful - update your database
+    updatePaymentStatus(payload.TransactionId, 'completed');
+    
+    // Process metadata if needed
+    const metadata = JSON.parse(payload.MetaData);
+    processMetadata(metadata);
+  } else {
+    // Payment failed - handle accordingly
+    updatePaymentStatus(payload.TransactionId, 'failed');
+  }
+  
+  // Always respond with 200 to acknowledge receipt
+  res.status(200).send('OK');
+});
+
+function verifyWebhook(payload) {
+  // Implement your webhook verification logic here
+  // You might want to verify the merchant ID, check signatures, etc.
+  return payload.Merchant === YOUR_MERCHANT_ID;
+}
+
+function updatePaymentStatus(transactionId, status) {
+  // Update your database with the payment status
+  console.log(`Updating transaction ${transactionId} to ${status}`);
+}
+
+function processMetadata(metadata) {
+  // Process additional metadata as needed
+  metadata.forEach(item => {
+    console.log(`Processing metadata: ${item.Name} = ${item.Value}`);
+  });
+}
+```
+
+##### PHP Example
+```php
+<?php
+// webhook.php
+
+// Get the raw POST data
+$input = file_get_contents('php://input');
+$payload = json_decode($input, true);
+
+// Verify the webhook
+if (!verifyWebhook($payload)) {
+    http_response_code(400);
+    exit('Invalid webhook');
+}
+
+// Process the payment notification
+if ($payload['IsSuccessful'] && $payload['Status'] === '00') {
+    // Payment successful
+    updatePaymentStatus($payload['TransactionId'], 'completed');
+    
+    // Process metadata
+    $metadata = json_decode($payload['MetaData'], true);
+    processMetadata($metadata);
+} else {
+    // Payment failed
+    updatePaymentStatus($payload['TransactionId'], 'failed');
+}
+
+// Respond with 200 OK
+http_response_code(200);
+echo 'OK';
+
+function verifyWebhook($payload) {
+    // Implement verification logic
+    return $payload['Merchant'] == YOUR_MERCHANT_ID;
+}
+
+function updatePaymentStatus($transactionId, $status) {
+    // Update database
+    error_log("Updating transaction $transactionId to $status");
+}
+
+function processMetadata($metadata) {
+    // Process metadata
+    foreach ($metadata as $item) {
+        error_log("Processing: {$item['Name']} = {$item['Value']}");
+    }
+}
+?>
+```
+
+#### Best Practices
+
+1. **Always respond with HTTP 200**: Return a 200 status code to acknowledge receipt, even if processing fails
+2. **Implement idempotency**: Handle duplicate webhook deliveries gracefully
+3. **Verify webhook authenticity**: Validate the merchant ID and implement signature verification if available
+4. **Process asynchronously**: For complex processing, queue the webhook for background processing
+5. **Log webhook events**: Keep detailed logs for debugging and audit purposes
+6. **Handle failures gracefully**: Implement retry logic for failed processing
+7. **Secure your endpoint**: Use HTTPS and implement proper authentication
+
+#### Webhook Security
+
+- Ensure your webhook endpoint uses HTTPS
+- Validate the merchant ID in the payload
+- Implement IP whitelisting if XpressPay provides specific IP ranges
+- Consider implementing webhook signature verification for additional security
+
+#### Testing Webhooks
+
+During development, you can use tools like:
+- **ngrok** to expose your local development server
+- **Postman** to simulate webhook requests
+- **Webhook testing tools** to validate your implementation
+
+#### Troubleshooting
+
+- **Webhook not received**: Check your URL configuration and firewall settings
+- **Duplicate notifications**: Implement idempotency checks using transaction IDs
+- **Processing errors**: Always return 200 OK and handle errors in background processing
+- **Metadata parsing**: The MetaData field contains escaped JSON that needs proper parsing
 
 Please checkout [Xpresspay Documentation](https://github.com) other ways you can integrate with our plugin
 ## Deployment
