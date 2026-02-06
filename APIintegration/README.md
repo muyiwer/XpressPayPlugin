@@ -41,6 +41,10 @@ To initialize the transaction, you'll need to pass information such as email, fi
       "footerText": "Powered by Test Ltd",
       "footerLink": "http://test.com",
       "footerLogo": "http://test.com/test.png",
+      "isRecurring": false,
+      "isStoreTransaction": false,
+      "payerName": "John Doe",
+      "isApiUser": true,
       "metadata": [
         {
           "name": "sample",
@@ -67,6 +71,9 @@ To initialize the transaction, you'll need to pass information such as email, fi
 | buttonColor     | `string`  |  null    | `false`   |  your prefered customized color for the payment page buttons.
 | footerText     | `string`  |  null    | `false`   |  your prefered customized text for the payment page footer.
 | footerLogo     | `string`  |  null    | `false`   |  your prefered customized logo for the payment page footer.
+| isRecurring     | `boolean`  |  false    | `false`   | Set to `true` if this is a recurring payment transaction.
+| isStoreTransaction     | `boolean`  |  false    | `false`   | Set to `true` if the transaction is initiated from a storefront or e-commerce platform.
+| payerName     | `string`  |  null    | `false`   | The full name of the customer making the payment.
 | metadata      | `object`  |  empty `object`    | `false`   | Object containing any extra information you want recorded with the transaction.
 
 
