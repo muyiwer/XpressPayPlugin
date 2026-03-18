@@ -109,6 +109,7 @@ Multiple items should be separated by `&`:
   "publicKey": "xxxxxxxxxxxxxxxxxxxxxxxxxx",
   "currency": "NGN",
   "isSplitpayment": false,
+  "isMultipleSplit": false,
   "splitPaymentReference": null,
   "metadata": [
     {
